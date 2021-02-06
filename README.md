@@ -29,29 +29,20 @@ Calculates the fixed point of a univariate function using fixed-point iteration.
 
 Consider the function
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="https://latex.codecogs.com/svg.latex?f(x)=x^{2}-1" title="f(x)=x^{2}-1" />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="https://latex.codecogs.com/svg.latex?f(x)=\sqrt{x}" title="f(x)=\sqrt{x}" />
+
+Just by inspection, we know we should have the fixed point <img src="https://latex.codecogs.com/svg.latex?c=1" title="c=1" /> (since <img src="https://latex.codecogs.com/svg.latex?\sqrt{1}=1" title="\sqrt{1}=1" />). Therefore, for the purpose of demonstrating the convergence of fixed-point iteration, we pick an initial guess <img src="https://latex.codecogs.com/svg.latex?x_{0}=10^{10}" title="x_{0}=10^{10}" />.
 
 Enter <img src="https://latex.codecogs.com/svg.latex?f(x)" title="f(x)" /> into MATLAB.
 
-    f = @(x) x^2-1;
-    
-Since <img src="https://latex.codecogs.com/svg.latex?f(x)" title="f(x)" /> is a simple function, we can see, by inspection, that it will have two roots at <img src="https://latex.codecogs.com/svg.latex?x\pm1" title="x\pm1" />. Therefore, to find *both* roots using the secant method, we first use `secant_method` with an initial guess <img src="https://latex.codecogs.com/svg.latex?x_{0}=-10" title="x_{0}=-10" />, and then use `secant_method` a second time but with an initial guess <img src="https://latex.codecogs.com/svg.latex?x_{0}=10" title="x_{0}=10" />.
-
-    % finds first root of f(x)=x^2-1 using the secant method
-    root1 = secant_method(f,-10)
-
-    % finds second root of f(x)=x^2-1 using the secant method
-    root2 = secant_method(f,10)
+    f = @(x) sqrt(x);
+    c = fixed_point_iteration(f,10^10)
 
 This yields the result
 
-    root1 =
+    c =
 
-        -1
+        1.0000
+        
 
-
-    root2 =
-
-         1
-
-*NOTE: A more complex example is also provided in "Secant Method - MATLAB Implementation".*
+*NOTE: More complex examples are also provided in "Fixed-Point Iteration - MATLAB Implementation" and "EXAMPLES.m".*
