@@ -60,6 +60,7 @@ V = fixed_point_iteration(g,V0)
 g = @(V) g_func(V);
 
 % finds V using an initial guess of V0 = 1 ft/s
+V0 = 1;
 V = fixed_point_iteration(g,V0)
 
 % defines g(V)
