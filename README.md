@@ -14,7 +14,7 @@ Calculates the fixed point of a univariate function using fixed-point iteration.
 
 ## Description
 
-`c = fixed_point_iteration(f,x0)` returns the fixed of a function <img src="https://latex.codecogs.com/svg.latex?f(x)" title="f(x)" /> specified by the function handle `f`, where `x0` is an initial guess of the fixed point. The default tolerance and maximum number of iterations are `TOL = 1e-12` and `imax = 1e6`, respectively.
+`c = fixed_point_iteration(f,x0)` returns the fixed point of a function <img src="https://latex.codecogs.com/svg.latex?f(x)" title="f(x)" /> specified by the function handle `f`, where `x0` is an initial guess of the fixed point. The default tolerance and maximum number of iterations are `TOL = 1e-12` and `imax = 1e6`, respectively.
 
 `c = fixed_point_iteration(f,x0,TOL)` returns the fixed point of a function <img src="https://latex.codecogs.com/svg.latex?f(x)" title="f(x)" /> specified by the function handle `f`, where `x0` is an initial guess of the fixed point and `TOL` is the tolerance. The default maximum number of iterations is `imax = 1e6`.
 
