@@ -27,7 +27,7 @@
 %   is the converged fixed point. This identifier 'all' may be appended to 
 %   any of the syntaxes used above.
 %
-% MATLAB Central File Exchange: 
+% MATLAB Central File Exchange: https://www.mathworks.com/matlabcentral/fileexchange/86992-fixed-point-iteration-fixed_point_iteration
 % GitHub: https://github.com/tamaskis/fixed_point_iteration-MATLAB
 %
 % See "Fixed-Point iteration - MATLAB implementation" for additional 
