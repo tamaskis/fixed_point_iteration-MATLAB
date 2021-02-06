@@ -45,4 +45,4 @@ This yields the result
         1.0000
         
 
-*NOTE: More complex examples are also provided in "Fixed-Point Iteration - MATLAB Implementation" and "EXAMPLES.m".*
+*NOTE: More complex examples are also provided in "Fixed-Point Iteration - MATLAB Implementation.pdf" and "EXAMPLES.m".*
