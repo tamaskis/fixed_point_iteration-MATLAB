@@ -33,8 +33,6 @@ Consider the function
 
 Just by inspection, we know we should have the fixed point <img src="https://latex.codecogs.com/svg.latex?c=1" title="c=1" /> (since <img src="https://latex.codecogs.com/svg.latex?\sqrt{1}=1" title="\sqrt{1}=1" />). Therefore, for the purpose of demonstrating the convergence of fixed-point iteration, we pick an initial guess <img src="https://latex.codecogs.com/svg.latex?x_{0}=10^{10}" title="x_{0}=10^{10}" />.
 
-Enter <img src="https://latex.codecogs.com/svg.latex?f(x)" title="f(x)" /> into MATLAB.
-
     f = @(x) sqrt(x);
     c = fixed_point_iteration(f,10^10)
 
