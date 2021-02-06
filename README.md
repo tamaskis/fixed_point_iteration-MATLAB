@@ -1,4 +1,4 @@
-# `fixed_point_iteration`
+# `fixed_point_iteration` [![View Fixed Point Iteration (fixed_point_iteration) on File Exchange](https://www.mathworks.com/matlabcentral/images/matlab-file-exchange.svg)](https://www.mathworks.com/matlabcentral/fileexchange/86992-fixed-point-iteration-fixed_point_iteration)
 
 Calculates the fixed point of a univariate function using fixed-point iteration.
 
