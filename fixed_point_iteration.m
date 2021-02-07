@@ -30,9 +30,9 @@
 % MATLAB Central File Exchange: https://www.mathworks.com/matlabcentral/fileexchange/86992-fixed-point-iteration-fixed_point_iteration
 % GitHub: https://github.com/tamaskis/fixed_point_iteration-MATLAB
 %
-% See "Fixed-Point iteration - MATLAB implementation" for additional 
-% documentation. Examples can be found in EXAMPLES.m. Both of these files 
-% are included with the download.
+% See "Fixed-Point iteration - MATLAB implementation.pdf" for additional 
+% documentation and examples. Examples can be found in EXAMPLES.m. Both of
+% these files are included with the download.
 %
 % Copyright (c) 2021 Tamas Kis
 
@@ -93,7 +93,7 @@ function c = fixed_point_iteration(f,x0,TOL,imax,output)
 
         % fixed-point iteration
         i = 1;
-        while (i < imax) && (err > TOL)
+        while (err > TOL) && (i < imax)
 
             % updates estimate of fixed point
             x(i+1) = f(x(i));
@@ -118,7 +118,7 @@ function c = fixed_point_iteration(f,x0,TOL,imax,output)
 
         % fixed-point iteration
         i = 1;
-        while (i < imax) && (err > TOL)
+        while (err > TOL) && (i < imax)
 
             % updates estimate of fixed point
             x_new = f(x_old);
