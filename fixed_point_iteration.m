@@ -135,7 +135,7 @@ function c = fixed_point_iteration(f,x0,TOL,imax,output)
         end
 
         % returns fixed point
-        c = x_new;
+        c = x_old;
         
     end
       
