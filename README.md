@@ -25,22 +25,6 @@ Calculates the fixed point of a univariate function using fixed-point iteration.
 `c = fixed_point_iteration(__,'all')` returns a vector, where the first element of this vector is the initial guess, all intermediate elements are the intermediate estimates of the fixed point, and the last element is the converged fixed point. This identifier 'all' may be appended to any of the syntaxes used above.
 
 
-## Example
+## Additional Documentation and Examples
 
-Consider the function
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="https://latex.codecogs.com/svg.latex?f(x)=\sqrt{x}" title="f(x)=\sqrt{x}" />
-
-Just by inspection, we know we should have the fixed point <img src="https://latex.codecogs.com/svg.latex?c=1" title="c=1" /> (since <img src="https://latex.codecogs.com/svg.latex?\sqrt{1}=1" title="\sqrt{1}=1" />). Therefore, for the purpose of demonstrating the convergence of fixed-point iteration, we pick an initial guess <img src="https://latex.codecogs.com/svg.latex?x_{0}=10^{10}" title="x_{0}=10^{10}" />.
-
-    f = @(x) sqrt(x);
-    c = fixed_point_iteration(f,10^10)
-
-This yields the result
-
-    c =
-
-        1.0000
-        
-
-*NOTE: More complex examples are also provided in "Fixed-Point Iteration - MATLAB Implementation.pdf" and "EXAMPLES.m".*
+See "DOCUMENTATION.pdf" for additional documentation and examples.
