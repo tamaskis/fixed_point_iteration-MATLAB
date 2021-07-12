@@ -10,7 +10,8 @@
 %   c = fixed_point_iteration(__,'all')
 %
 % Copyright © 2021 Tamas Kis
-% Last Update: 2021-06-18
+% Contact: tamas.a.kis@outlook.com
+% Last Update: 2021-07-12
 %
 %--------------------------------------------------------------------------
 %
@@ -22,9 +23,9 @@
 %
 %--------------------------------------------------------------------------
 %
-% -------
-% INPUTS:
-% -------
+% ------
+% INPUT:
+% ------
 %   f       - (function_handle) f(x)
 %   x0      - (1×1) initial guess for fixed point
 %   TOL     - (OPTIONAL) (1×1) tolerance
@@ -33,9 +34,9 @@
 %             all intermediate fixed point estimates; otherwise, a faster 
 %             algorithm is used to only return the converged fixed point
 %
-% --------
-% OUTPUTS:
-% --------
+% -------
+% OUTPUT:
+% -------
 %   c       - (1×1 or n×1) fixed point of f(x)
 %           	--> if "output" is specified as 'all', then "c" will be a
 %                   vector, where the first element is the initial guess,
@@ -61,7 +62,7 @@ function c = fixed_point_iteration(f,x0,TOL,imax,output)
     if nargin < 5
         return_all = false;
     else
-        if strcmp(output,'all')
+        if strcmpi(output,'all')
             return_all = true;
         else
             return_all = false;
@@ -72,14 +73,13 @@ function c = fixed_point_iteration(f,x0,TOL,imax,output)
     err = 2*TOL;
     
     % implements algorithm for fixed-point iteration where all intermediate 
-    % estimates of the fixed point are also returned
+    % fixed point estimates are also returned
     if return_all
         
         % preallocates x
         x = zeros(imax,1);
     
-        % sets estimate of fixed point at the first iteration of the fixed
-        % point iteration as the initial guess
+        % inputs initial guess for fixed point into x vector
         x(1) = x0;
 
         % fixed-point iteration
@@ -97,13 +97,13 @@ function c = fixed_point_iteration(f,x0,TOL,imax,output)
 
         end
 
-        % returns converged fixed point along with intermediate estimates
-        % of the fixed point
+        % returns converged fixed point along with intermediate fixed point
+        % estimates
         c = x(1:i);
     
     else
         
-        % sets estimate of fixed point at the first iteration of the fixed
+        % sets fixed point estimate at the first iteration of the fixed
         % point iteration as the initial guess
         x_old = x0;
         
@@ -120,7 +120,7 @@ function c = fixed_point_iteration(f,x0,TOL,imax,output)
             % calculates error
             err = abs(x_new-x_old);
             
-            % stores current estimate of fixed point for next iteration
+            % stores current fixed point estimate for next iteration
             x_old = x_new;
         
             % increments loop index
