@@ -10,16 +10,12 @@
 %   c = fixed_point_iteration(__,'all')
 %
 % Copyright © 2021 Tamas Kis
+% Last Update: 2021-07-25
+% Website: tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
-% Last Update: 2021-07-12
 %
-%--------------------------------------------------------------------------
-%
-% MATLAB Central File Exchange: https://www.mathworks.com/matlabcentral/fileexchange/86992-fixed-point-iteration-fixed_point_iteration
-% GitHub: https://github.com/tamaskis/fixed_point_iteration-MATLAB
-%
-% See EXAMPLES.mlx for examples and "DOCUMENTATION.pdf" for additional 
-% documentation. Both of these files are included with the download.
+% REFERENCES:
+%   [1] https://tamaskis.github.io/documentation/Fixed-Point%20Iteration.pdf
 %
 %--------------------------------------------------------------------------
 %

@@ -28,4 +28,4 @@ Calculates the fixed point of a univariate function using fixed-point iteration.
 ## Examples and Additional Documentation
 
    -  See "EXAMPLES.mlx" or the "Examples" tab on the File Exchange page for examples. 
-   -  See "DOCUMENTATION.pdf" (included with download, also available at https://github.com/tamaskis/fixed_point_iteration-MATLAB/blob/main/DOCUMENTATION.pdf) for additional documentation.
+   -  See "Fixed-Point Iteration.pdf" (included with download, also available at https://tamaskis.github.io/documentation/Fixed-Point%20Iteration.pdf) for additional documentation.
