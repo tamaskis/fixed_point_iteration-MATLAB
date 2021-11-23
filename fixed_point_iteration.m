@@ -7,7 +7,7 @@
 %   c = fixed_point_iteration(f,x0,opts)
 %
 % Copyright © 2021 Tamas Kis
-% Last Update: 2021-08-28
+% Last Update: 2021-11-22
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -74,7 +74,7 @@ function c = fixed_point_iteration(f,x0,opts)
         TOL = opts.TOL;
     end
     
-    % determines if warnings should be displayed (defaults to display)
+    % determines if warnings should be displayed (defaults to true)
     if (nargin < 3) || isempty(opts) || ~isfield(opts,'warnings')
         warnings = true;
     else
