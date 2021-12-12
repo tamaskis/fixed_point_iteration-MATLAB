@@ -1,13 +1,15 @@
 %==========================================================================
 %
-% fixed_point_iteration  Calculates the fixed point of a univariate 
-% function using fixed-point iteration.
+% fixed_point_iteration  Calculates the fixed point of a univariate, 
+% scalar-valued function using fixed-point iteration.
 %
 %   c = fixed_point_iteration(f,x0)
 %   c = fixed_point_iteration(f,x0,opts)
 %
+% See also fzero, bisection_method, newtons_method, secant_method.
+%
 % Copyright © 2021 Tamas Kis
-% Last Update: 2021-11-22
+% Last Update: 2021-12-11
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -22,16 +24,17 @@
 % ------
 % INPUT:
 % ------
-%   f       - (function_handle) f(x)
+%   f       - (1×1 function_handle) univariate, scalar-valued function f(x)
+%             (f:R->R)
 %   x0      - (1×1 double) initial guess for fixed point
-%   opts    - (OPTIONAL) (struct) solver options structure
+%   opts    - (OPTIONAL) (1×1 struct) solver options
 %       • imax          - (1×1 double) maximimum number of iterations
-%       • return_all    - (logical) all intermediate fixed point estimates
-%                         are returned if set to "true"; otherwise, a
-%                         faster algorithm is used to return only the 
-%                         converged fixed point
+%       • return_all    - (1×1 logical) all intermediate fixed point
+%                         estimates are returned if set to "true";
+%                         otherwise, a faster algorithm is used to return
+%                         only the converged fixed point
 %       • TOL           - (1×1 double) tolerance
-%       • warnings      - (logical) true if any warnings should be
+%       • warnings      - (1×1 logical) true if any warnings should be
 %                         displayed, false if not
 %
 % -------
