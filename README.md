@@ -14,10 +14,10 @@ Calculates the fixed point of a univariate, scalar-valued function using fixed-p
 `c = fixed_point_iteration(f,x0)` returns the fixed point of a function <img src="https://latex.codecogs.com/svg.latex?\inline&space;f(x)" title="f(x)" /> specified by the function handle `f`, where `x0` is an initial guess of the fixed point. The default tolerance and maximum number of iterations are `TOL = 1e-12` and `imax = 1e6`, respectively.
 
 `c = fixed_point_iteration(f,x0,opts)` does the same as the syntax above, but allows for the specification of optional solver parameters. `opts` is a structure that has the following fields:
-   - `imax` &rightarrow; maximum number of iterations
-   - `return_all` &rightarrow; all intermediate fixed point estimates are returned if set to `true`; otherwise, only the converged fixed point is returned
-   - `TOL` &rightarrow; tolerance
-   - `warnings` &rightarrow; `true` if any warnings should be displayed, `false` if not
+   - `imax` &rightarrow; maximum number of iterations (defaults to <img src="https://latex.codecogs.com/svg.latex?\inline&space;10^{6}" title="" />)
+   - `return_all` &rightarrow; all intermediate fixed point estimates are returned if set to `true`; otherwise, only the converged fixed point is returned (defaults to `false`)
+   - `TOL` &rightarrow; tolerance (defaults to <img src="https://latex.codecogs.com/svg.latex?\inline&space;10^{-12}" title="" />)
+   - `warnings` &rightarrow; `true` if any warnings should be displayed, `false` if not (defaults to `true`)
 
 
 ## Examples and Additional Documentation
