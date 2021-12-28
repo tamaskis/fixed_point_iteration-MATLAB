@@ -114,12 +114,6 @@ function c = fixed_point_iteration(f,x0,opts)
             i = i+1;
 
         end
-
-        % displays warning if maximum number of iterations reached
-        if (i == imax) && warnings
-            warning(strcat('The method failed after n=',num2str(imax),...
-                ' iterations.'));
-        end
         
         % returns converged fixed point along with intermediate fixed point
         % estimates
@@ -158,16 +152,19 @@ function c = fixed_point_iteration(f,x0,opts)
             i = i+1;
 
         end
-
-        % displays warning if maximum number of iterations reached
-        if (i == imax) && warnings
-            warning(strcat('The method failed after n=',num2str(imax),...
-                ' iterations.'));
-        end
         
         % returns converged fixed point
         c = x_new;
         
+    end
+
+    % ---------------------------------------------------------
+    % Displays warning if maximum number of iterations reached.
+    % ---------------------------------------------------------
+
+    if (i == imax) && warnings
+        warning(strcat('The method failed after i=',num2str(imax),...
+            ' iterations.'));
     end
       
 end
