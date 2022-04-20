@@ -1,26 +1,30 @@
 # `fixed_point_iteration` [![View Fixed Point Iteration (fixed_point_iteration) on File Exchange](https://www.mathworks.com/matlabcentral/images/matlab-file-exchange.svg)](https://www.mathworks.com/matlabcentral/fileexchange/86992-fixed-point-iteration-fixed_point_iteration)
 
-Calculates the fixed point of a univariate, scalar-valued function using fixed-point iteration.
+Fixed-point iteration for finding the fixed point of a univariate, scalar-valued function.
 
 
 ## Syntax
 
 `c = fixed_point_iteration(f,x0)`\
-`c = fixed_point_iteration(f,x0,opts)`
+`c = fixed_point_iteration(f,x0,opts)`\
+`[c,k] = fixed_point_iteration(__)`\
+`[c,k,c_all] = fixed_point_iteration(__)`
 
 
 ## Description
 
-`c = fixed_point_iteration(f,x0)` returns the fixed point of a function <img src="https://latex.codecogs.com/svg.latex?\inline&space;f(x)" title="f(x)" /> specified by the function handle `f`, where `x0` is an initial guess of the fixed point. The default tolerance and maximum number of iterations are `TOL = 1e-12` and `imax = 1e6`, respectively.
+`c = fixed_point_iteration(f,x0)` returns the fixed point of a function <img src="https://latex.codecogs.com/svg.latex?\inline&space;f(x)" title="f(x)" /> specified by the function handle `f`, where `x0` is an initial guess of the fixed point.
 
-`c = fixed_point_iteration(f,x0,opts)` does the same as the syntax above, but allows for the specification of optional solver parameters. `opts` is a structure that has the following fields:
-   - `imax` &rightarrow; maximum number of iterations (defaults to <img src="https://latex.codecogs.com/svg.latex?\inline&space;10^{6}" title="" />)
-   - `return_all` &rightarrow; all intermediate fixed point estimates are returned if set to `true`; otherwise, only the converged fixed point is returned (defaults to `false`)
-   - `TOL` &rightarrow; tolerance (defaults to <img src="https://latex.codecogs.com/svg.latex?\inline&space;10^{-12}" title="" />)
-   - `warnings` &rightarrow; `true` if any warnings should be displayed, `false` if not (defaults to `true`)
+`c = fixed_point_iteration(f,x0,opts)` does the same as the syntax above, but allows for the specification of optional solver parameters. `opts` is a structure with the following fields:
+   - `k_max` &rightarrow; maximum number of iterations (defaults to 200)
+   - `return_all` &rightarrow; returns estimates at all iteration if set to `true` (defaults to `false`)
+   - `TOL` &rightarrow; tolerance (defaults to <img src="https://latex.codecogs.com/svg.latex?\inline&space;10^{-10}" title="" />)
 
+`[c,k] = fixed_point_iteration(__)` also returns the number of iterations (`k`) performed of fixed-point iteration.
+
+`[c,k,c_all] = fixed_point_iteration(__)` does the same as the previous syntaxes, but also returns an array (`c_all`) storing the fixed point estimates at each iteration. This syntax requires that `opts.return_all` be set to true.
 
 ## Examples and Additional Documentation
 
    - See "EXAMPLES.mlx" or the "Examples" tab on the File Exchange page for examples. 
-   - See ["Fixed_Point_Iteration.pdf"](https://tamaskis.github.io/documentation/Fixed_Point_Iteration.pdf) (also included with download) for the technical documentation.
+   - See ["Root_Finding_Methods.pdf"](https://tamaskis.github.io/documentation/Root_Finding_Methods.pdf) (also included with download) for the technical documentation.

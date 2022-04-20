@@ -1,170 +1,111 @@
 %==========================================================================
 %
-% fixed_point_iteration  Calculates the fixed point of a univariate, 
-% scalar-valued function using fixed-point iteration.
+% fixed_point_iteration  Fixed-point iteration for finding the fixed point 
+% of a univariate, scalar-valued function.
 %
 %   c = fixed_point_iteration(f,x0)
 %   c = fixed_point_iteration(f,x0,opts)
+%   [c,k] = fixed_point_iteration(__)
+%   [c,k,c_all] = fixed_point_iteration(__)
 %
-% See also fzero, bisection_method, newtons_method, secant_method.
-%
-% Copyright © 2021 Tamas Kis
-% Last Update: 2021-12-27
+% Copyright © 2022 Tamas Kis
+% Last Update: 2022-04-20
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
 % TECHNICAL DOCUMENTATION:
-% https://tamaskis.github.io/documentation/Fixed_Point_Iteration.pdf
-%
-% REFERENCES:
-%   [1] Burden and Faires, "Numerical Analysis", 9th Ed. (pp. 56-66)
+% https://tamaskis.github.io/documentation/Root_Finding_Methods.pdf
 %
 %--------------------------------------------------------------------------
 %
 % ------
 % INPUT:
 % ------
-%   f       - (1×1 function_handle) univariate, scalar-valued function f(x)
-%             (f:R->R)
+%   f       - (1×1 function_handle) univariate, scalar-valued function, 
+%             f(x) (f : ℝ → ℝ)
 %   x0      - (1×1 double) initial guess for fixed point
-%   opts    - (OPTIONAL) (1×1 struct) solver options
-%       • imax       - (1×1 double) maximimum number of iterations 
-%                      (defaults to 1e6)
-%       • return_all - (1×1 logical) all intermediate fixed point estimates
-%                      are returned if set to "true"; otherwise, a faster 
-%                      algorithm is used to return only the converged fixed
-%                      point (defaults to false)
-%       • TOL        - (1×1 double) tolerance (defaults to 1e-12)
-%       • warnings   - (1×1 logical) true if any warnings should be 
-%                      displayed, false if not (defaults to true)
+%   opts    - (1×1 struct) (OPTIONAL) solver options
+%       • k_max      - (1×1 double) maximimum number of iterations 
+%                      (defaults to 200)
+%       • return_all - (1×1 logical) returns estimates at all iterations if
+%                      set to "true"
+%       • TOL        - (1×1 double) tolerance (defaults to 10⁻¹⁰)
 %
 % -------
 % OUTPUT:
 % -------
-%   c       - (1×1 double or 1D double array) fixed point of f(x)
-%           	--> If "return_all" is specified as "true", then "c" will
-%                   be a vector, where the first element is the initial
-%                   guess, the last element is the converged fixed point, 
-%                   and the other elements are intermediate estimates of 
-%                   the fixed point.
-%               --> Otherwise, "c" is a single number storing the converged
-%                   fixed point.
+%   c       - (1×1 double) fixed point of f(x)
+%   k       - (1×1 double) number of solver iterations
+%   c_all   - (1×(k+1) double) fixed point estimates at all iterations
 %
 %==========================================================================
-function c = fixed_point_iteration(f,x0,opts)
+function [c,k,c_all] = fixed_point_iteration(f,x0,opts)
     
     % ----------------------------------
     % Sets (or defaults) solver options.
     % ----------------------------------
     
-    % sets maximum number of iterations (defaults to 1e6)
-    if (nargin < 3) || isempty(opts) || ~isfield(opts,'imax')
-        imax = 1e6;
+    % sets maximum number of iterations (defaults to 200)
+    if (nargin < 3) || isempty(opts) || ~isfield(opts,'k_max')
+        k_max = 200;
     else
-        imax = opts.imax;
+        k_max = opts.k_max;
     end
     
-    % determines return value (defaults to only return converged root)
+    % determines if all intermediate estimates should be returned
     if (nargin < 3) || isempty(opts) || ~isfield(opts,'return_all')
         return_all = false;
     else
         return_all = opts.return_all;
     end
     
-    % sets tolerance (defaults to 1e-12)
+    % sets tolerance (defaults to 10⁻¹⁰)
     if (nargin < 3) || isempty(opts) || ~isfield(opts,'TOL')
-        TOL = 1e-12;
+        TOL = 1e-10;
     else
         TOL = opts.TOL;
     end
     
-    % determines if warnings should be displayed (defaults to true)
-    if (nargin < 3) || isempty(opts) || ~isfield(opts,'warnings')
-        warnings = true;
-    else
-        warnings = opts.warnings;
-    end
+    % ----------------------
+    % Fixed-point iteration.
+    % ----------------------
     
-    % -----------------------------------------------------
-    % "Return all" implementation of fixed-point iteration.
-    % -----------------------------------------------------
+    % fixed point estimate at first iteration
+    x_curr = x0;
     
+    % preallocates array
     if return_all
+        c_all = zeros(1,k_max+1);
+    end
+    
+    % fixed-point iteration
+    for k = 1:k_max
         
-        % preallocates x
-        x = zeros(imax,1);
-    
-        % inputs initial guess for fixed point into x vector
-        x(1) = x0;
-
-        % initializes the error so the loop will be entered
-        err = 2*TOL;
-    
-        % fixed-point iteration
-        i = 1;
-        while (err > TOL) && (i < imax)
-
-            % updates estimate of fixed point
-            x(i+1) = f(x(i));
-
-            % calculates error
-            err = abs(x(i+1)-x(i));
-
-            % increments loop index
-            i = i+1;
-
+        % stores results in arrays
+        if return_all
+            c_all(k) = x_curr;
         end
         
-        % returns converged fixed point along with intermediate fixed point
-        % estimates
-        c = x(1:i);
-    
-    % -----------------------------------------------
-    % "Fast" implementation of fixed-point iteration.
-    % -----------------------------------------------
-    
-    else
+        % updates estimate of fixed point
+        x_next = f(x_curr);
         
-        % sets fixed point estimate at the first iteration of the fixed
-        % point iteration as the initial guess
-        x_old = x0;
-        
-        % initializes x_new so its scope isn't limited to the while loop
-        x_new = 0;
-        
-        % initializes the error so the loop will be entered
-        err = 2*TOL;
-
-        % fixed-point iteration
-        i = 1;
-        while (err > TOL) && (i < imax)
-
-            % updates estimate of fixed point
-            x_new = f(x_old);
-        
-            % calculates error
-            err = abs(x_new-x_old);
-            
-            % stores current fixed point estimate for next iteration
-            x_old = x_new;
-        
-            % increments loop index
-            i = i+1;
-
+        % terminates solver if converged
+        if (abs(x_next-x_curr) < TOL)
+            break;
         end
         
-        % returns converged fixed point
-        c = x_new;
+        % stores updated fixed point estimate for next iteration
+        x_curr = x_next;
         
     end
-
-    % ---------------------------------------------------------
-    % Displays warning if maximum number of iterations reached.
-    % ---------------------------------------------------------
-
-    if (i == imax) && warnings
-        warning(strcat('The method failed after i=',num2str(imax),...
-            ' iterations.'));
+    
+    % converged fixed point
+    c = x_next;
+    
+    % stores converged result and trims array
+    if return_all
+        c_all(k+1) = c;
+        c_all = c_all(1:(k+1));
     end
-      
+    
 end
