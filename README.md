@@ -27,4 +27,4 @@ Fixed-point iteration for finding the fixed point of a univariate, scalar-valued
 ## Examples and Additional Documentation
 
    - See "EXAMPLES.mlx" or the "Examples" tab on the File Exchange page for examples. 
-   - See ["Root_Finding_Methods.pdf"](https://tamaskis.github.io/documentation/Root_Finding_Methods.pdf) (also included with download) for the technical documentation.
+   - See ["Root_Finding_Methods.pdf"](https://tamaskis.github.io/files/Root_Finding_Methods.pdf) (also included with download) for the technical documentation.

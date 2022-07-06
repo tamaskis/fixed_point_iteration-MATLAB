@@ -9,12 +9,12 @@
 %   [c,k,c_all] = fixed_point_iteration(__)
 %
 % Copyright © 2021 Tamas Kis
-% Last Update: 2022-04-20
+% Last Update: 2022-07-06
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
 % TECHNICAL DOCUMENTATION:
-% https://tamaskis.github.io/documentation/Root_Finding_Methods.pdf
+% https://tamaskis.github.io/files/Root_Finding_Methods.pdf
 %
 %--------------------------------------------------------------------------
 %
@@ -24,7 +24,7 @@
 %   f       - (1×1 function_handle) univariate, scalar-valued function, 
 %             f(x) (f : ℝ → ℝ)
 %   x0      - (1×1 double) initial guess for fixed point
-%   opts    - (1×1 struct) (OPTIONAL) solver options
+%   opts    - (OPTIONAL) (1×1 struct) solver options
 %       • k_max      - (1×1 double) maximimum number of iterations 
 %                      (defaults to 200)
 %       • return_all - (1×1 logical) returns estimates at all iterations if
