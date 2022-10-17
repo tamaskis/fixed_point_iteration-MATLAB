@@ -9,7 +9,7 @@
 %   [c,k,c_all] = fixed_point_iteration(__)
 %
 % Copyright © 2021 Tamas Kis
-% Last Update: 2022-07-06
+% Last Update: 2022-10-16
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -70,6 +70,12 @@ function [c,k,c_all] = fixed_point_iteration(f,x0,opts)
     % Fixed-point iteration.
     % ----------------------
     
+    % returns initial guess if it is a fixed point of f(x)
+    if f(x0) == x0
+        c = x0;
+        return
+    end
+    
     % fixed point estimate at first iteration
     x_curr = x0;
     
@@ -78,7 +84,7 @@ function [c,k,c_all] = fixed_point_iteration(f,x0,opts)
         c_all = zeros(1,k_max+1);
     end
     
-    % fixed-point iteration
+    % iteration
     for k = 1:k_max
         
         % stores results in arrays
